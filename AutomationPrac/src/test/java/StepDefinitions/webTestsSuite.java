@@ -121,13 +121,24 @@ public class webTestsSuite {
 	@When("^Search for an \"(.*)\"$")
 	public void search_for_an_item (String item) throws Throwable
 	{
+		try
+		{
 		homeReuse.searchItem(item);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			driver.quit();
+		}
 		
 	}
 	
 	@Then("^Results are displayed for an \"(.*)\"$")
 	public void results_are_displayed_for_an_item (String item) throws Throwable
 	{
+	
+		try
+		{
 		searchPage = new SearchPage(driver);
 		
 		searchPage.noResults();
@@ -159,6 +170,12 @@ public class webTestsSuite {
 				System.out.println("Test is Failed. Error on Page");
 			}
 		}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			driver.quit();
+		}
 			
 	}
 
@@ -166,39 +183,87 @@ public class webTestsSuite {
 	@And("^Go to Cart$")
 	public void go_to_cart() throws Throwable
 	{
+		try
+		{
 		cartPage = new CartPage(driver);
 		cartPage.viewCart();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			driver.quit();
+		}
 	}
 	
 	@Then("^No item is displayed in Cart$")
 	public void no_item_is_displayed_in_cart() throws Throwable
 	{
+		try
+		{
 		assertEquals("Test is Failed", CartPage.expEmptyCartMsg, CartPage.eCText);
 		System.out.println("Test is Passed");
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			driver.quit();
+		}
 	}
 	
 	@When("^Add an item under Home->Popular to Cart$")
 	public void add_an_item_under_home_popular_to_cart() throws Throwable
 	{
+		try
+		{
 		System.out.println("Awaiting Development");
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			driver.quit();
+		}
 	}
 	
 	@Then("^Added item is displayed in Cart$")
 	public void added_item_is_displayed_in_cart() throws Throwable
 	{
+		try
+		{
 		System.out.println("Awaiting Development");	
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			driver.quit();
+		}
 	}
 	
     @When("^Remove an item from Cart$")
 	public void remove_an_item_from_cart() throws Throwable
 	{
+    	try
+    	{
     	System.out.println("Awaiting Development");
+    	}
+    	catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			driver.quit();
+		}
 	}
     
     @Then("^Item is removed from Cart$")
    	public void item_is_removed_from_cart() throws Throwable
    	{
+    	try
+    	{
     	System.out.println("Awaiting Development");
+    	}
+    	catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			driver.quit();
+		}
    	}
 	
 	@After public void cleanUp()
